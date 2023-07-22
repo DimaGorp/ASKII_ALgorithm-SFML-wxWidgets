@@ -1,8 +1,9 @@
-find_package(wxWidgets REQUIRED gl core base OPTIONAL_COMPONENTS net)
+#find_package(wxWidgets REQUIRED gl core base OPTIONAL_COMPONENTS net)
 #find_package(SFML 2.5.1 COMPONENTS graphics window system REQUIRED)
-include(${wxWidgets_USE_FILE})
+#include(${wxWidgets_USE_FILE})
 
-#add_subdirectory(SFML)
+add_subdirectory(SFML)
+
 
 
 set(image ${CMAKE_CURRENT_SOURCE_DIR})
@@ -13,10 +14,10 @@ add_library(Window ${CMAKE_CURRENT_SOURCE_DIR}/Window/Window.hpp ${CMAKE_CURRENT
 
 add_library(Settings ${CMAKE_CURRENT_SOURCE_DIR}/Window/Settings/Settings.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Window/Settings/Settings.cpp)
 
-target_link_libraries(Window PUBLIC ${wxWidgets_LIBRARIES})
-#target_link_libraries(Window PUBLIC ASKII_alg)
+target_link_libraries(Window PUBLIC wx::net wx::core wx::base)
+target_link_libraries(Window PUBLIC ASKII_alg)
 
-target_link_libraries(Settings PUBLIC ${wxWidgets_LIBRARIES})
+target_link_libraries(Settings PUBLIC wx::net wx::core wx::base)
 
 target_link_libraries(Window PUBLIC Settings)
 

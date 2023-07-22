@@ -7,7 +7,7 @@
 #include <wx/wfstream.h>
 
 #include "Settings/Settings.hpp"
-
+#include "ASKII/ASKII2.hpp"
 class Window : public wxFrame
 {
     wxPanel * panel;
@@ -17,7 +17,7 @@ class Window : public wxFrame
     wxTextCtrl * result;
     wxMenuBar * menu;
     wxFileDialog *openFileDialog;
-
+    askii::ASKII_ALGORITHM * askii;
     Settings_Window * settings;
     
 public:

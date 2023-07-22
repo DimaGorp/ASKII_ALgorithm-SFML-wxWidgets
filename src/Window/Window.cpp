@@ -14,7 +14,7 @@ Window::Window(const wxString& title,const wxPoint& position,const wxSize& win_s
     panel = new wxPanel(this);
     wxButton * open = new wxButton(panel,wxID_ANY,wxString("Open"),wxPoint((this->win_size.GetWidth()/2)-50,(this->win_size.GetHeight()/2)-25),wxSize(100,50));
     wxButton * convert = new wxButton(panel,wxID_ANY,wxString("Convert"),wxPoint(open->GetPosition().x,open->GetPosition().y+50),wxSize(100,50));
-    result = new wxTextCtrl(panel,wxID_ANY,wxString("Nothing added yet.."),wxPoint(this->win_size.GetWidth()/2+100,50),wxSize(400,600),wxTE_READONLY);
+    result = new wxTextCtrl(panel,wxID_ANY,wxString("Nothing added yet.."),wxPoint(this->win_size.GetWidth()/2+100,50),wxSize(400,600),wxTE_MULTILINE | wxTE_READONLY);
     wxInitAllImageHandlers();
     image = new wxStaticBitmap(panel,wxID_ANY,wxBitmap(REFS "/Window/ref/no.png",wxBITMAP_TYPE_PNG),wxPoint(this->win_size.GetWidth()/4-200,this->win_size.GetHeight()/4),wxSize(200, 500));
     
@@ -53,7 +53,16 @@ void Window::onButtonOpenClick(wxCommandEvent& ev){
 }
 
 void Window::onButtonConvertClick(wxCommandEvent& ev){
-    
+    askii = new askii::ASKII_ALGORITHM(openFileDialog->GetPath().ToStdString());
+    askii->convert_to_aski();
+        result->Clear();
+        std::string * tmp_table = askii->getAskiiTable();
+        for(int i = 0;i<askii->getSize().y;i++){
+            
+            result->AppendText(tmp_table[i]);
+            result->AppendText('\n');
+        }
+        delete askii;
 }
 
 
