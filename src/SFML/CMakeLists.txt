@@ -15,5 +15,6 @@ target_link_libraries(ASKII_alg PUBLIC ${CMAKE_SOURCE_DIR}/ext/SFML2/lib/libsfml
                                         ${CMAKE_SOURCE_DIR}/ext/SFML2/lib/libsfml-system.2.6.0.dylib
                                         ${CMAKE_SOURCE_DIR}/ext/SFML2/lib/libsfml-window.2.6.0.dylib)
 #target_compile_features(ASKII_alg PUBLIC cxx_std_17)
-target_include_directories(ASKII_alg PUBLIC ${CMAKE_SOURCE_DIR}/ext/SFML2/include/) 
-target_include_directories(ASKII_alg PUBLIC ${CMAKE_SOURCE_DIR}/src/SFML) 
+target_include_directories(ASKII_alg PUBLIC ${CMAKE_SOURCE_DIR}/ext/SFML2/include/
+                                            ${CMAKE_SOURCE_DIR}/src/SFML    
+                                            ${CMAKE_SOURCE_DIR}/src/) 

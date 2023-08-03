@@ -7,15 +7,11 @@
 
 #include "ASKII2.hpp"
 #include <math.h>
+#include "DIRS.h"
 
 
 namespace askii {
 
-void recieveMessege(ASKII_ALGORITHM& askii,std::string &recieved_string){
-    if(askii.cur_image.loadFromFile(recieved_string)){
-        std::cout<<"Yay, image loaded\n";
-    }
-}
 
 
 
@@ -26,10 +22,6 @@ ASKII_ALGORITHM::ASKII_ALGORITHM(std::string path)
     }
     this->path = path;
     size = cur_image.getSize();
-    image_string = new std::string[size.y];
-    for (int i = 0; i < size.y; i++){
-        image_string[i] = (char)('1' + i);
-    }
 
 };
 
@@ -167,12 +159,12 @@ int ASKII_ALGORITHM::find_min_intensity(char chanel) {
 
 void ASKII_ALGORITHM::askii_algorithm() {
     cur_image.loadFromFile(path);
-    /*file.open("../result/askii/result.txt");
+    file.open(file_T"/index.txt");
     if(file.is_open()){
         std::cout<<"file opened sucessfuly\n";
     }else{
         return;
-    }*/
+    }
     std::string symbols = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$;//{ '@', '%', '#', 'x', '+', '=', ':', '-', '.', ' ' }";
     int saturation;
     double greyscale;
@@ -188,11 +180,12 @@ void ASKII_ALGORITHM::askii_algorithm() {
             
             
             symbol = symbols[saturation];
-            image_string[y]+=symbol;
+            file<<symbol;
         }
+       file<<"\n";
     }
     
-    
+    file.close();
 }
 
 int ASKII_ALGORITHM::get_pixel_intensity(sf::Vector2u amount_of_pixels) {
@@ -241,20 +234,6 @@ void ASKII_ALGORITHM::scale(float faсtor) {
     cur_image.copy(tmp, size.x, size.y);
     cur_image.saveToFile("../result/sacling_res.png");
 }
-
-char* ASKII_ALGORITHM::get_askii_array() {
-    char line[94];
-    
-    for (unsigned char i =33,j = 0; i<127; i++,j++) {
-        line[j] = i;
-    }
-    return line;
-}
-
-
-
-
-
 
 
 }

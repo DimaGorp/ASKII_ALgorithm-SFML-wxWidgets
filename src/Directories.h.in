@@ -1,2 +1,3 @@
 #pragma once
 #define REFS "@image@"
+#define file_T "@textfile@"

@@ -2,7 +2,9 @@
 
 
 #include <iostream>
+#include <fstream>
 #include <wx/wx.h>
+#include <wx/grid.h>
 #include <wx/filedlg.h>
 #include <wx/wfstream.h>
 
@@ -15,6 +17,7 @@ class Window : public wxFrame
     wxPoint position;
     wxStaticBitmap * image;
     wxTextCtrl * result;
+    wxFont *font;
     wxMenuBar * menu;
     wxFileDialog *openFileDialog;
     askii::ASKII_ALGORITHM * askii;
@@ -27,7 +30,7 @@ private:
     void onButtonOpenClick(wxCommandEvent& ev);
     void onButtonConvertClick(wxCommandEvent& ev);
     void onSettingsClicked(wxCommandEvent& ev);
-
+    void OnKeyDown(wxKeyEvent& event);
 };
  
  

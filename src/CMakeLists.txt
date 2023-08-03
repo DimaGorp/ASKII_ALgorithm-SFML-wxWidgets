@@ -7,6 +7,7 @@ add_subdirectory(SFML)
 
 
 set(image ${CMAKE_CURRENT_SOURCE_DIR})
+set(textfile ${CMAKE_CURRENT_SOURCE_DIR}/SFML/ASKII)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Directories.h.in ${CMAKE_CURRENT_SOURCE_DIR}/DIRS.h)
 
