@@ -10,25 +10,41 @@ Window::Window(const wxString& title,const wxPoint& position,const wxSize& win_s
     
     
     
+    wxBoxSizer * main_sizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer * left = new wxBoxSizer(wxVERTICAL);
+    wxBoxSizer * centre = new wxBoxSizer(wxVERTICAL);
+    wxBoxSizer * right = new wxBoxSizer(wxVERTICAL);
+
+   // this = new wxPanel(this);
+    wxButton * open = new wxButton(this,wxID_ANY,wxString("Open"),wxPoint((this->win_size.GetWidth()/2)-50,(this->win_size.GetHeight()/2)-25),wxSize(100,50));
+    wxButton * convert = new wxButton(this,wxID_ANY,wxString("Convert"),wxPoint(open->GetPosition().x,open->GetPosition().y+50),wxSize(100,50));
+
+    result = new wxTextCtrl(this,wxID_ANY,wxString("Nothing added yet.."),wxPoint(this->win_size.GetWidth()/2+100,50),wxSize(400,600),  wxTE_MULTILINE |wxTE_READONLY | wxHSCROLL);
+    right->Add(result,0,wxEXPAND | wxTOP,20);
     
-    panel = new wxPanel(this);
-    wxButton * open = new wxButton(panel,wxID_ANY,wxString("Open"),wxPoint((this->win_size.GetWidth()/2)-50,(this->win_size.GetHeight()/2)-25),wxSize(100,50));
-    wxButton * convert = new wxButton(panel,wxID_ANY,wxString("Convert"),wxPoint(open->GetPosition().x,open->GetPosition().y+50),wxSize(100,50));
-    result = new wxTextCtrl(panel,wxID_ANY,wxString("Nothing added yet.."),wxPoint(this->win_size.GetWidth()/2+100,50),wxSize(400,600),  wxTE_MULTILINE |wxTE_READONLY | wxHSCROLL);
     wxFont  font =  wxFont(wxSize(16, 16), wxFontFamily::wxFONTFAMILY_TELETYPE, wxFontStyle::wxFONTSTYLE_NORMAL, wxFontWeight::wxFONTWEIGHT_NORMAL);//Monospace font
     result->SetFont(font);
     wxInitAllImageHandlers();
-    image = new wxStaticBitmap(panel,wxID_ANY,wxBitmap(REFS "/Window/ref/no.png",wxBITMAP_TYPE_PNG),wxPoint(this->win_size.GetWidth()/4-200,this->win_size.GetHeight()/4),wxSize(200, 500));
+    image = new wxStaticBitmap(this,wxID_ANY,wxBitmap(REFS "no.png",wxBITMAP_TYPE_PNG),wxPoint(this->win_size.GetWidth()/4-200,this->win_size.GetHeight()/4),wxSize(200, 500));
+    
     
     open->Bind(wxEVT_BUTTON,&Window::onButtonOpenClick,this);
     convert->Bind(wxEVT_BUTTON,&Window::onButtonConvertClick,this);
+
+    centre->Add(open,1,wxEXPAND | wxTOP,300);
+    centre->Add(convert,1,wxEXPAND | wxBOTTOM,300);
     menu = new wxMenuBar();
     wxMenu * menuSettings = new wxMenu();
     menuSettings->Append(wxID_OPEN, "&Settings...\tCtrl-H","Help string shown in status bar for this menu item");
     menuSettings->Bind(wxEVT_MENU,&Window::onSettingsClicked,this);
-    panel->Bind(wxEVT_KEY_DOWN, &Window::OnKeyDown, this);
+    //this->Bind(wxEVT_KEY_DOWN, &Window::OnKeyDown, this);
     menu->Append(menuSettings, "&Settings");
     SetMenuBar(menu);
+    left->Add(image,1,wxEXPAND | wxALL,5);
+    main_sizer->Add(left,1,wxEXPAND | wxALL,5);
+    main_sizer->Add(centre,1,wxEXPAND | wxALL,5);
+    main_sizer->Add(right,0,wxEXPAND | wxALL,5);
+    this->SetSizer(main_sizer);
     //wxLog::SetActiveTarget(new wxLogTextCtrl(result));
     CreateStatusBar();
 }
@@ -48,9 +64,9 @@ void Window::onButtonOpenClick(wxCommandEvent& ev){
         wxLogError("Cannot open file '%s'.", openFileDialog->GetPath());
         return;
     }
-    
-    delete image;
-    image = new wxStaticBitmap(panel,wxID_ANY,wxBitmap(openFileDialog->GetPath(),wxBITMAP_TYPE_PNG),wxPoint(this->win_size.GetWidth()/4-200,this->win_size.GetHeight()/4),wxSize(200, 500));
+    wxBitmap tmp;
+    tmp.LoadFile(openFileDialog->GetPath(),wxBITMAP_TYPE_PNG);
+    image->SetBitmap(tmp);
     wxLogStatus(openFileDialog->GetPath());
     
 }

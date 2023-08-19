@@ -1,18 +1,20 @@
 .DS_Store
 .vscode/
 
-wxWidgets test/build/
-wxWidgets test/.vscode/
-wxWidgets test/.DS_Store
 
-SFML-test/build/
-SFML-test/.vscode/
-SFML-test/.DS_Store
+
+
 
 build/
 ext/.DS_Store
 src/.DS_Store
 src/SFML/.DS_Store
 tests/.DS_Store
+tests/wWidgets-test/
+tests/SFML-test/build/
+tests/SFML-test/ext
+tests/SFML-test/SFML-master/
+tests/SFML-test/SFML-master.zip
 
-tests/
+
+ext/

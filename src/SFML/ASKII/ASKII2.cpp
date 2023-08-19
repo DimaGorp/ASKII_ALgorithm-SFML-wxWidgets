@@ -159,7 +159,7 @@ int ASKII_ALGORITHM::find_min_intensity(char chanel) {
 
 void ASKII_ALGORITHM::askii_algorithm() {
     cur_image.loadFromFile(path);
-    file.open(file_T"/index.txt");
+    file.open(file_T"index.txt");
     if(file.is_open()){
         std::cout<<"file opened sucessfuly\n";
     }else{
