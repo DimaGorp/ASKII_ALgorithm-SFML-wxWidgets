@@ -2,7 +2,7 @@
 ```console
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-# if you don't have installed cmake type in console the next command:
+# if you don't have installed cmake type in console the next command: 
 ```console
 brew install cmake
 ```
