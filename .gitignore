@@ -10,9 +10,8 @@ ext/.DS_Store
 src/.DS_Store
 src/SFML/.DS_Store
 tests/.DS_Store
-tests/wWidgets-test/
 tests/SFML-test/build/
-
+tests/wWidgets-test/build/
 
 
 ext/
