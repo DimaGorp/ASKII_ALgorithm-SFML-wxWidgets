@@ -12,9 +12,7 @@ src/SFML/.DS_Store
 tests/.DS_Store
 tests/wWidgets-test/
 tests/SFML-test/build/
-tests/SFML-test/ext
-tests/SFML-test/SFML-master/
-tests/SFML-test/SFML-master.zip
+
 
 
 ext/
