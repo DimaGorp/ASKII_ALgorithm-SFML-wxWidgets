@@ -29,3 +29,4 @@ And finaly you can run compiled script with command:
 ```console
 build/TEST
 ```
+# Building for Windows
