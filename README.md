@@ -27,6 +27,6 @@ cmake --build build/
 And finaly you can run compiled script with command:
 
 ```console
-build/TEST
+build/ASKII
 ```
 # Building for Windows
