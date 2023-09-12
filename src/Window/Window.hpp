@@ -8,8 +8,7 @@
 #include <wx/filedlg.h>
 #include <wx/wfstream.h>
 
-#include "Settings/Settings.hpp"
-#include "ASKII/ASKII2.hpp"
+#include "SFML/ASKII.hpp"
 class Window : public wxFrame
 {
     wxPanel * panel;
@@ -18,10 +17,8 @@ class Window : public wxFrame
     wxStaticBitmap * image;
     wxTextCtrl * result;
     wxFont *font;
-    wxMenuBar * menu;
     wxFileDialog *openFileDialog;
     askii::ASKII_ALGORITHM * askii;
-    Settings_Window * settings;
     
 public:
     Window(const wxString& title = "no",const wxPoint& pos = wxDefaultPosition, const wxSize& size= wxDefaultSize);
@@ -29,7 +26,6 @@ public:
 private:
     void onButtonOpenClick(wxCommandEvent& ev);
     void onButtonConvertClick(wxCommandEvent& ev);
-    void onSettingsClicked(wxCommandEvent& ev);
     void OnKeyDown(wxKeyEvent& event);
 };
  

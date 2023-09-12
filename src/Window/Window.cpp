@@ -33,13 +33,6 @@ Window::Window(const wxString& title,const wxPoint& position,const wxSize& win_s
 
     centre->Add(open,1,wxEXPAND | wxTOP,300);
     centre->Add(convert,1,wxEXPAND | wxBOTTOM,300);
-    menu = new wxMenuBar();
-    wxMenu * menuSettings = new wxMenu();
-    menuSettings->Append(wxID_OPEN, "&Settings...\tCtrl-H","Help string shown in status bar for this menu item");
-    menuSettings->Bind(wxEVT_MENU,&Window::onSettingsClicked,this);
-    //this->Bind(wxEVT_KEY_DOWN, &Window::OnKeyDown, this);
-    menu->Append(menuSettings, "&Settings");
-    SetMenuBar(menu);
     left->Add(image,1,wxEXPAND | wxALL,5);
     main_sizer->Add(left,1,wxEXPAND | wxALL,5);
     main_sizer->Add(centre,1,wxEXPAND | wxALL,5);
@@ -108,13 +101,4 @@ void Window::OnKeyDown(wxKeyEvent& event){
     //event.Skip();
 }
 
-void Window::onSettingsClicked(wxCommandEvent& ev){
-    settings = new Settings_Window("General Settings",wxDefaultPosition,wxSize(500,500));
-    if(settings->ShowModal() == wxID_OK){
-        wxLogStatus("Settings closed sucsefully");
-    }else if(settings->ShowModal() == wxID_CANCEL){
-        wxLogStatus("Settings closed without changings");
-    }
-    settings->Destroy();
-}
 Window::~Window(){}

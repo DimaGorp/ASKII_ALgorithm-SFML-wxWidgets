@@ -8,13 +8,11 @@
 #ifndef ASKII_hpp
 #define ASKII_hpp
 
-#include "includes.h"
-
 #include <iostream>
 #include <fstream>
 #include <cstring>
-//#include <SFML/Graphics.hpp>
-//#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 namespace image_pre_processing {
 int boundedPixelValue(sf::Color color,float brightnessFactor);
@@ -27,6 +25,7 @@ class ASKII_ALGORITHM{
     sf::Vector2u size;
     std::ofstream file;
     std::string path;
+    std::string *image_string;
     void convert_to_gray();
     void contrast();
     int find_min_intensity(char chanel);
@@ -37,10 +36,14 @@ class ASKII_ALGORITHM{
     void scale(float factor);
 public:
     ASKII_ALGORITHM(std::string path);
+    std::string* getAskiiTable(){return image_string;}
     ~ASKII_ALGORITHM();
     sf::Vector2u getSize(){return size;}
 
     void convert_to_aski();
 };
+
+void recieveMessege(ASKII_ALGORITHM& askii,std::string &recieved_string);
 }
+
 #endif /* ASKII_hpp */

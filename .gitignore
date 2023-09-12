@@ -12,4 +12,4 @@ tests/.DS_Store
 tests/SFML-test/build/
 tests/wWidgets-test/build/
 
-dependencies/
+src/Window/Settings/
