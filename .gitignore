@@ -11,5 +11,7 @@ src/SFML/.DS_Store
 tests/.DS_Store
 tests/SFML-test/build/
 tests/wWidgets-test/build/
-
+tests/vcpkg/vcpkg/
+tests/vcpkg/build/
+tests/vcpkg/vcpkg_installed/
 src/Window/Settings/
