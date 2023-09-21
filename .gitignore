@@ -13,7 +13,5 @@ tests/SFML-test/build/
 tests/wWidgets-test/build/
 
 tests/conan/build/
-tests/conan/CMakeUserPresets.json
-tests/vcpkg/vcpkg_installed/
 
 src/Window/Settings/
