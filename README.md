@@ -2,7 +2,7 @@
 MyPortfolio
 
 # Building for MacOS  
-To download brew type this command(if you have brew installed go to downloading SFML): 
+To download homebrew type this command(if you do have a brew you do not need this commmand): 
 ```console
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
@@ -10,10 +10,16 @@ if you don't have installed cmake type in console the next command:
 ```console
 brew install cmake
 ```
-After that type that command in Terminal:
+After that you should setup a pyhton:
 ```console
-brew install sfml
+brew install python
 ```
+You can check your python version by simple type(we need Python3):
+```console
+python --version
+```
+if this what you see that means that everything alright:
+![What is this](icons/1.png)
 Open the folder with downloaded repository and type that command:
 ```console
 mkdir build

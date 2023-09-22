@@ -26,7 +26,7 @@ public:
 private:
     void onButtonOpenClick(wxCommandEvent& ev);
     void onButtonConvertClick(wxCommandEvent& ev);
-    void OnKeyDown(wxKeyEvent& event);
+    void OnKeyDown(wxMouseEvent &event);
 };
  
  

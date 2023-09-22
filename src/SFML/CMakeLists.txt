@@ -1,7 +1,8 @@
 project(ASKII)
 add_library(askii ASKII.hpp ASKII.cpp)
+set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/")
 
-find_package(SFML 2.6 COMPONENTS graphics audio system REQUIRED)
+find_package(SFML REQUIRED)
 
 target_link_libraries(askii PUBLIC 
                     sfml-graphics sfml-audio)

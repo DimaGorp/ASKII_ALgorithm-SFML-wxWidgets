@@ -22,14 +22,15 @@ Window::Window(const wxString& title,const wxPoint& position,const wxSize& win_s
     result = new wxTextCtrl(this,wxID_ANY,wxString("Nothing added yet.."),wxPoint(this->win_size.GetWidth()/2+100,50),wxSize(400,600),  wxTE_MULTILINE |wxTE_READONLY | wxHSCROLL);
     right->Add(result,0,wxEXPAND | wxTOP,20);
     
-    wxFont  font =  wxFont(wxSize(16, 16), wxFontFamily::wxFONTFAMILY_TELETYPE, wxFontStyle::wxFONTSTYLE_NORMAL, wxFontWeight::wxFONTWEIGHT_NORMAL);//Monospace font
-    result->SetFont(font);
+    font = new wxFont(wxSize(16, 16), wxFontFamily::wxFONTFAMILY_TELETYPE, wxFontStyle::wxFONTSTYLE_NORMAL, wxFontWeight::wxFONTWEIGHT_NORMAL);//Monospace font
+    result->SetFont(*font);
     wxInitAllImageHandlers();
     image = new wxStaticBitmap(this,wxID_ANY,wxBitmap(REFS "no.png",wxBITMAP_TYPE_PNG),wxPoint(this->win_size.GetWidth()/4-200,this->win_size.GetHeight()/4),wxSize(200, 500));
     
     
     open->Bind(wxEVT_BUTTON,&Window::onButtonOpenClick,this);
     convert->Bind(wxEVT_BUTTON,&Window::onButtonConvertClick,this);
+    result->Bind(wxEVT_MOUSEWHEEL,&Window::OnKeyDown,this);
 
     centre->Add(open,1,wxEXPAND | wxTOP,300);
     centre->Add(convert,1,wxEXPAND | wxBOTTOM,300);
@@ -86,19 +87,16 @@ void Window::onButtonConvertClick(wxCommandEvent& ev){
     myfile.close();
     delete askii;
 }
-void Window::OnKeyDown(wxKeyEvent& event){
-    wxChar key = event.GetKeyCode();
-    wxFont font = result->GetFont();
-    if(key == WXK_ALT){
-        font.Scale(1.5);
+void Window::OnKeyDown(wxMouseEvent &event){
+    if(event.GetWheelRotation() >0){
+        font->Scale(1.5);
         wxLogStatus("+");
-    }else if(key == WXK_COMMAND){
-        font.Scale(0.5);
+    }else if(event.GetWheelRotation() <0){
+        font->Scale(0.5);
         wxLogStatus("-");
     }
     
-    result->SetFont(font);
-    //event.Skip();
+    result->SetFont(*font);
 }
 
 Window::~Window(){}
