@@ -12,7 +12,7 @@ add_subdirectory("src/")
 list(APPEND LIBS wx::net wx::core wx::base)
 list(APPEND LIBS Window)
 list(APPEND LIBS askii)
-
+list(APPEND LIBS ScrImage)
 list(APPEND DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src/)
 
 add_executable(ASKII main.cpp)
