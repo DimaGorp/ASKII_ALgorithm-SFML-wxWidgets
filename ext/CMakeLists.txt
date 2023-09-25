@@ -10,4 +10,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(wxWidgets)
 
 
+set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/")
+
+find_package(SFML REQUIRED GLOBAL)
 
