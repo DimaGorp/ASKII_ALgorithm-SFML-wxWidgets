@@ -11,6 +11,7 @@ add_library(Window ${CMAKE_CURRENT_SOURCE_DIR}/Window/Window.hpp ${CMAKE_CURRENT
 
 target_link_libraries(Window PUBLIC wx::net wx::core wx::base wx::stc
                         sfml-graphics sfml-system)
-target_link_libraries(Window PUBLIC askii)
+target_include_directories(Window PUBLIC ${wxWidgets_SOURCE_DIR}/include)
+target_link_libraries(Window PUBLIC askii_lib)
 
 target_include_directories(Window PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
