@@ -8,13 +8,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 add_subdirectory("ext/")
 add_subdirectory("src/")
 
-
+include(FetchContent)
+FetchContent_MakeAvailable(wxWidgets)
 list(APPEND LIBS wx::net wx::core wx::base)
 list(APPEND LIBS sfml-graphics sfml-audio)
 list(APPEND LIBS Window)
 list(APPEND LIBS askii_lib)
 list(APPEND DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src/)
-list(APPEND DIRS ${wxWidgets_SOURCE_DIR}/include)
 
 
 add_executable(ASKII main.cpp)
