@@ -1,5 +1,4 @@
 #include <iostream>
-#include "SFML/ASKII.hpp"
 #include "help.h"
 
 #ifdef USE_MATH
@@ -29,7 +28,6 @@ class Window:public wxFrame
     wxPanel * panel;
     wxTextCtrl * result;
     wxFileDialog * openFileDialog;
-    askii::ASKII_ALGORITHM *askii;  
     wxSize win_size;
 
     public:
@@ -44,7 +42,6 @@ class Window:public wxFrame
         wxBoxSizer * centre = new wxBoxSizer(wxVERTICAL);
         wxBoxSizer * right = new wxBoxSizer(wxVERTICAL);
 
-    // this = new wxPanel(this);
         wxButton * open = new wxButton(this,wxID_ANY,wxString("Open"),wxPoint((this->win_size.GetWidth()/2)-50,(this->win_size.GetHeight()/2)-25),wxSize(100,50));
         wxButton * convert = new wxButton(this,wxID_ANY,wxString("Convert"),wxPoint(open->GetPosition().x,open->GetPosition().y+50),wxSize(100,50));
 
@@ -77,26 +74,7 @@ class Window:public wxFrame
             wxLogError("Cannot open file '%s'.", openFileDialog->GetPath());
             return;
         }
-        result->Clear();
-        std::ifstream myfile;
-        myfile.open(file_T"/index.txt");
-        if(myfile.is_open()){
-            std::cout<<"file opened sucessfuly\n";
-        }else{
-            return;
-        }
-        std::string row;
-        askii = new askii::ASKII_ALGORITHM(openFileDialog->GetPath().ToStdString());
-
-        askii->convert_to_aski();
-        while (getline (myfile, row))
-        {
-            
-            
-            *result<<row<<'\n';
-        }
-        myfile.close();
-        delete askii;
+       
         wxLogStatus(openFileDialog->GetPath());
     }
 };
