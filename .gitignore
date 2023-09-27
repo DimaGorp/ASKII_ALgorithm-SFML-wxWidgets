@@ -12,6 +12,8 @@ tests/.DS_Store
 tests/SFML-test/build/
 tests/wWidgets-test/build/
 
-tests/conan/build/
+tests/vcpkg/vcpkg/
+tests/vcpkg/vcpkg_installed/
+tests/vcpkg/build/
 
 src/Window/Settings/
