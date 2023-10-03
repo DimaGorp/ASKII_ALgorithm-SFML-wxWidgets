@@ -17,7 +17,7 @@ App::App(){
 }
 bool App::OnInit() 
 {
-    Window * window = new Window("IT WORKS!!!",wxPoint(100,100),wxSize(1000,750));
+    myWindow * window = new myWindow("IT WORKS!!!",wxPoint(100,100),wxSize(1000,750));
     
     window->Show();
     return true;

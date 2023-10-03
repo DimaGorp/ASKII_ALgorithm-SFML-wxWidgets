@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.20)
 
 project(ASKII)
 
@@ -7,10 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 add_subdirectory("ext/")
 add_subdirectory("src/")
-
-include(FetchContent)
-FetchContent_MakeAvailable(wxWidgets)
-list(APPEND LIBS wx::net wx::core wx::base)
+list(APPEND LIBS wx::core wx::base)
 list(APPEND LIBS sfml-graphics sfml-audio)
 list(APPEND LIBS Window)
 list(APPEND LIBS askii_lib)

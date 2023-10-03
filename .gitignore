@@ -15,5 +15,5 @@ tests/wWidgets-test/build/
 tests/vcpkg/vcpkg/
 tests/vcpkg/vcpkg_installed/
 tests/vcpkg/build/
-
+vcpkg/
 src/Window/Settings/

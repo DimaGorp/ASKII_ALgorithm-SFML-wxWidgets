@@ -1,7 +1,7 @@
 #include "Window.hpp"
 #include "DIRS.h"
 
-Window::Window(const wxString& title,const wxPoint& position,const wxSize& win_size):wxFrame(nullptr,wxID_ANY,title,position,win_size)
+myWindow::myWindow(const wxString& title,const wxPoint& position,const wxSize& win_size):wxFrame(nullptr,wxID_ANY,title,position,win_size)
 {
     this->position = position;
     this->win_size = win_size;
@@ -29,9 +29,9 @@ Window::Window(const wxString& title,const wxPoint& position,const wxSize& win_s
     image = new wxStaticBitmap(this,wxID_ANY,wxBitmap(REFS "no.png",wxBITMAP_TYPE_PNG),wxPoint(this->win_size.GetWidth()/4-200,this->win_size.GetHeight()/4),wxSize(200, 500));
     //image = new ScrolledImage(wxString(REFS "no.png"),this,wxID_ANY);
     
-    open->Bind(wxEVT_BUTTON,&Window::onButtonOpenClick,this);
-    convert->Bind(wxEVT_BUTTON,&Window::onButtonConvertClick,this);
-    result->Bind(wxEVT_MOUSEWHEEL,&Window::OnKeyDown,this);
+    open->Bind(wxEVT_BUTTON,&myWindow::onButtonOpenClick,this);
+    convert->Bind(wxEVT_BUTTON,&myWindow::onButtonConvertClick,this);
+    result->Bind(wxEVT_MOUSEWHEEL,&myWindow::OnKeyDown,this);
 
     centre->Add(open,1,wxEXPAND | wxTOP,300);
     centre->Add(convert,1,wxEXPAND | wxBOTTOM,300);
@@ -46,7 +46,7 @@ Window::Window(const wxString& title,const wxPoint& position,const wxSize& win_s
 }
 
 
-void Window::onButtonOpenClick(wxCommandEvent& ev){
+void myWindow::onButtonOpenClick(wxCommandEvent& ev){
     openFileDialog = new wxFileDialog(this, _("Open PNG file"), "", "",
                        "PNG files (*.png)|*.png", wxFD_OPEN|wxFD_FILE_MUST_EXIST);
     if (openFileDialog->ShowModal() == wxID_CANCEL)
@@ -69,7 +69,7 @@ void Window::onButtonOpenClick(wxCommandEvent& ev){
     
 }
 
-void Window::onButtonConvertClick(wxCommandEvent& ev){
+void myWindow::onButtonConvertClick(wxCommandEvent& ev){
     result->ClearAll();
     std::ifstream myfile;
     myfile.open(file_T"/index.txt");
@@ -91,7 +91,7 @@ void Window::onButtonConvertClick(wxCommandEvent& ev){
     myfile.close();
     delete askii;
 }
-void Window::OnKeyDown(wxMouseEvent &event){
+void myWindow::OnKeyDown(wxMouseEvent &event){
     if(event.GetWheelRotation() >0){
         result->ZoomIn();
     }else if(event.GetWheelRotation() <0){
@@ -100,4 +100,7 @@ void Window::OnKeyDown(wxMouseEvent &event){
     
 }
 
-Window::~Window(){}
+myWindow::~myWindow()
+{
+
+}

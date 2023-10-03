@@ -1,9 +1,6 @@
 project(ASKII)
 
-include(FetchContent)
-FetchContent_MakeAvailable(wxWidgets)
 add_subdirectory("SFML/")
-
 set(image ${CMAKE_SOURCE_DIR}/refs/)
 set(textfile ${CMAKE_SOURCE_DIR}/refs/)
 
@@ -11,7 +8,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Directories.h.in ${CMAKE_CURRENT_SOUR
 
 add_library(Window ${CMAKE_CURRENT_SOURCE_DIR}/Window/Window.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Window/Window.cpp)
 
-target_link_libraries(Window PUBLIC wx::net wx::core wx::base wx::stc
+target_link_libraries(Window PRIVATE wx::core wx::base wx::stc
                         sfml-graphics sfml-system)
 target_link_libraries(Window PUBLIC askii_lib)
 

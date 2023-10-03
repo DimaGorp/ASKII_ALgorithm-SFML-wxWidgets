@@ -1,0 +1,14 @@
+{
+    "name": "test",
+    "version-string" : "0.0.1", 
+    "dependencies" : [
+        {
+        "name": "sfml",
+        "default-features": false
+        },
+        {
+            "name": "wxwidgets",
+            "default-features": false
+        }
+    ]
+}

@@ -1,15 +1,10 @@
 project(ASKII)
+include("${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
-include(FetchContent)
+#set(SFML_DIR "${CMAKE_SOURCE_DIR}/vcpkg_installed/")
+find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED GLOBAL )#PATHS "${CMAKE_SOURCE_DIR}/vcpkg/packages/")
 
-FetchContent_Declare(
-    wxWidgets
-    GIT_REPOSITORY https://github.com/wxWidgets/wxWidgets.git
-    GIT_TAG        v3.1.4
-)
-
-set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/")
-
-find_package(SFML REQUIRED GLOBAL)
+#set(CMAKE_PREFIX_PATH "${wxwidgets_path}")
+find_package(wxWidgets CONFIG REQUIRED GLOBAL)#PATHS "${CMAKE_SOURCE_DIR}/vcpkg/packages/")
 
 
