@@ -11,6 +11,7 @@ src/SFML/.DS_Store
 tests/.DS_Store
 tests/SFML-test/build/
 tests/wWidgets-test/build/
+tests/wWidgets-test/vcpkg/
 
 tests/vcpkg/vcpkg/
 tests/vcpkg/vcpkg_installed/

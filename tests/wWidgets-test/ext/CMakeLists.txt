@@ -1,13 +1,9 @@
 project(test)
 
-include(FetchContent)
 
-FetchContent_Declare(
-    wxWidgets
-    GIT_REPOSITORY https://github.com/wxWidgets/wxWidgets.git
-    GIT_TAG        v3.1.4
-)
-FetchContent_MakeAvailable(wxWidgets)
+include(${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
+find_package(OpenGL GLOBAL)
+find_package(wxWidgets CONFIG REQUIRED GLOBAL)
 
-
+include_directories(${wxWidgets_USE_FILE})

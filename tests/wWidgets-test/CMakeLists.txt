@@ -11,7 +11,8 @@ add_subdirectory("ext/")
 
 add_executable(test src/main.cpp)
 
-target_link_libraries(test PRIVATE wx::net wx::core wx::base)
-target_include_directories(test PRIVATE ${wxWidgets_SOURCE_DIR}/include)
+
+target_link_libraries(test PRIVATE wx::core wx::base wx::gl)
+#target_include_directories(test PRIVATE ${wxWidgets_INCLUDE_DIR})
 
 
