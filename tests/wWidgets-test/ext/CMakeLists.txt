@@ -1,9 +1,5 @@
 project(test)
-
-
 include(${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake)
-
-find_package(OpenGL GLOBAL)
-find_package(wxWidgets CONFIG REQUIRED GLOBAL)
-
-include_directories(${wxWidgets_USE_FILE})
+find_path(GLOB_RECURSE wxWidgets_DIR "${CMAKE_BUILD_DIR}/vcpkg_installed/wxWidgets*.cmake")
+find_package(OpenGL REQUIRED GLOBAL)
+find_package(wxWidgets COMPONENTS core base gl REQUIRED CONFIG GLOBAL)

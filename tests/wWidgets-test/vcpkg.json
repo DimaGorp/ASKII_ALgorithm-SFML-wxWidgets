@@ -1,10 +1,13 @@
 {
-    "name": "test",
-    "version-string" : "0.0.1", 
-    "dependencies" : [
-        {
-            "name": "wxwidgets",
-            "default-features": false
-        }
-    ]
+  "name": "test",
+  "version-string": "0.0.1",
+  "dependencies": [
+    "opengl",
+    {
+      "name": "wxwidgets",
+      "default-features": false
+    }
+
+    
+  ]
 }

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24.2)
+cmake_minimum_required(VERSION 3.12)
 
 project(test)
 
@@ -12,7 +12,7 @@ add_subdirectory("ext/")
 add_executable(test src/main.cpp)
 
 
-target_link_libraries(test PRIVATE wx::core wx::base wx::gl)
-#target_include_directories(test PRIVATE ${wxWidgets_INCLUDE_DIR})
+target_link_libraries(test PRIVATE wx::wxcore wx::wxbase wx::wxgl)#${wxWidgets_LIBRARIES})
+#target_include_directories(test PRIVATE ${wxWidgets_INCLUDE_DIRS})
 
 
