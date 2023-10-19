@@ -8,7 +8,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Directories.h.in ${CMAKE_CURRENT_SOUR
 
 add_library(Window ${CMAKE_CURRENT_SOURCE_DIR}/Window/Window.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Window/Window.cpp)
 
-target_link_libraries(Window PRIVATE wx::core wx::base wx::stc
+target_link_libraries(Window PRIVATE
                         sfml-graphics sfml-system)
 target_link_libraries(Window PUBLIC askii_lib)
 

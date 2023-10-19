@@ -1,6 +1,6 @@
 {
     "name": "test",
-    "version-string" : "0.0.1", 
+    "version-string" : "1.0", 
     "dependencies" : [
         {
         "name": "sfml",
