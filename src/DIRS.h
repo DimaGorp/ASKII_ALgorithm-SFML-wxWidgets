@@ -1,3 +1,3 @@
 #pragma once
-#define REFS "C:/ASKII_ALgorithm-SFML-wxWidgets/refs/"
-#define file_T "C:/ASKII_ALgorithm-SFML-wxWidgets/refs/"
+#define REFS "/Users/dell/Desktop/C++/filesystem/test/refs/"
+#define file_T "/Users/dell/Desktop/C++/filesystem/test/refs/"

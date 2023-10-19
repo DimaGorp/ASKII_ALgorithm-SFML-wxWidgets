@@ -10,92 +10,67 @@ if you don't have installed cmake type in console the next command:
 ```console
 brew install cmake
 ```
-After that you should setup a pyhton:
+check if your git is downloaded:
 ```console
-brew install python
+git --version
 ```
-You can check your python version by simple type(we need Python3):
+if its not:
 ```console
-python --version
+brew install git
 ```
-if this what you see that means that everything alright:
-***
-![](icons/1.png)
-***
-Now lets setup a conan. We need version below 2.00:
+After that you should clone a vcpkg to a current directory:
 ```console
-pip install -v "conan<2"
+git clone https://github.com/microsoft/vcpkg.git
 ```
-After that we can check our conan verison by simply type:
+Go to vcpkg folder and run bootstrap-vcpkg.sh script or you can do it with this command:
 ```console
-conan --version
-```
-If you see that result that means that everything is alright and we inastalled our 1.61.0 version of conan:
-```console
-Conan version 1.61.0
-```
-Go to that repository directory throuh trminal with command:
-```console
-cd "[This repository directory]"
+./vcpkg/bootstrap-vcpkg.sh
 ```
 Type a command:
 ```console
 mkdir build
 ```
-Type that command to install needed .cmake files in build directory. Remember that any packages that you are installing are installs in .conan folder:
+Type a command:
 ```console
-cd build && conan install .. --build=missing
-```
-The last step is to open a downloaded local repository folder from terminal and type next commands (step by step): 
-```console
-cmake ..
-make
+cmake -S . -B build/
 ```
 And finaly you can run compiled script with command:
 ```console
 ./ASKII
 ```
+if you compile your version for XCode you should go to build folder and open Xcode solution. Run ALL_BUILD script and after that you can run ASKII script and enjoy your programm
 # Building for Windows
-Install pyhton for windows [How to install Python 3.8 on Windows 10 in 2020](https://youtu.be/LuQjh2Q0UzQ?si=x4LcXUvL6kSy3iU5).Dont forget to add python to PATH and customise installation by 'install python for all users' and 'install pip'.
-After that check python version and pip version to make sure that they was added to PATH variable. Just type in your terminal:
-```console
-python --version
-```
-```console
-pip --version
-```
-Also you need to check if cmake is installed:
+
+Check if cmake is installed:
 ```console
 cmake --version
 ```
-After that we can install conan:
+if its not intall cmake from [official page](https://cmake.org/download/)
+check if your git is downloaded:
 ```console
-pip install -v "conan<2"
+git --version
 ```
-You need to add directory where your conan.exe file is located to your PATH varibale. It ususally install in your Script/ directory. So make sure that you added it.
-After that you can check you conan version by type:
+if its not download it from [official page](https://git-scm.com/downloads):
+After that you should clone a vcpkg to a current directory:
 ```console
-conan --version
+git clone https://github.com/microsoft/vcpkg.git
 ```
-If you see that result that means that everything is alright and we inastalled our 1.61.0 version of conan:
+Go to vcpkg folder and run bootstrap-vcpkg.bat script or you can do it with this command:
 ```console
-Conan version 1.61.0
-```
-Go to that repository directory throuh trminal with command:
-```console
-cd "[This repository directory]"
+./vcpkg/bootstrap-vcpkg.bat
 ```
 Type a command:
 ```console
 mkdir build
 ```
-Type that command to install needed .cmake files in build directory. Remember that any packages that you are installing are installs in .conan folder:
+Type a command:
 ```console
-cd build && conan install .. --build=missing
+cmake -S . -B build/
 ```
-The last step is to open a downloaded local repository folder from terminal and type: 
+And finaly you can run compiled script with command:
 ```console
-cmake ..
+./ASKII
 ```
+if you are building for visual studio:
 Go to your /build directory and open Visual Studio soluttion.
-After that you can follow [this tutorial](https://simpleitk.readthedocs.io/en/v2.1.0/buildingWindows.html) to run that project. Dont forget to build 'ALL_BUILD'. Choose 'Release' configuration and make 'ASKII' as the current project. After that you can run you solution and be happy with your result.
+After that you can follow [this tutorial](https://simpleitk.readthedocs.io/en/v2.1.0/buildingWindows.html) to run that project. Dont forget to build 'ALL_BUILD'.Make 'ASKII' as the current project. After that you can run you solution and be happy with your result.
