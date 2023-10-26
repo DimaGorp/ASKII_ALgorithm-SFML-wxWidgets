@@ -9,18 +9,19 @@
 #include <wx/stc/stc.h>
 
 #include "SFML/ASKII.hpp"
-//#include "Components/ScrolledImage.hpp"
+#include "Components/Scroll_Image.hpp"
 class myWindow : public wxFrame
 {
     wxPanel * panel;
     wxSize win_size;
     wxPoint position;
-    wxStaticBitmap * image;
+    //wxStaticBitmap * image;
     wxStyledTextCtrl * result;
     wxBoxSizer * left;
     wxFont *font;
     wxFileDialog *openFileDialog;
     askii::ASKII_ALGORITHM * askii;
+    ScrImage * image;
     
 public:
     myWindow(const wxString& title = "no",const wxPoint& pos = wxDefaultPosition, const wxSize& size= wxDefaultSize);

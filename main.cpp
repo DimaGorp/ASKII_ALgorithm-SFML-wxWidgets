@@ -1,6 +1,6 @@
 #include <iostream>
 #include <wx/wx.h>
-#include "Window/Window.hpp"
+#include "Window.hpp"
 
 class App:public wxApp
 {

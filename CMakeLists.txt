@@ -15,8 +15,8 @@ find_package(wxWidgets CONFIG REQUIRED)
 
 
 add_subdirectory("src/")
-list(APPEND LIBS wx::core wx::base)
-list(APPEND LIBS sfml-graphics sfml-audio)
+list(APPEND wxLIBS wx::core wx::base wx::stc)
+list(APPEND sfmlLIBS sfml-graphics sfml-audio)
 list(APPEND LIBS Window)
 list(APPEND LIBS askii_lib)
 list(APPEND DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src/)
@@ -32,10 +32,10 @@ if(LINUX)
 	set(EXECUTABLE_TYPE "")
 endif(LINUX)
 
-target_link_libraries(Window PRIVATE wx::core wx::base wx::stc)
+target_link_libraries(Window PRIVATE ${wxLIBS})
+target_link_libraries(SrcImage PRIVATE ${wxLIBS})
 
 add_executable(ASKII ${EXECUTABLE_TYPE} main.cpp)
 
-
 target_include_directories(ASKII PUBLIC ${DIRS})
-target_link_libraries(ASKII PRIVATE ${LIBS})
+target_link_libraries(ASKII PRIVATE ${wxLIBS} ${sfmlLIBS} ${LIBS})
