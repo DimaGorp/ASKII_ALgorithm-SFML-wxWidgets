@@ -24,8 +24,10 @@ void ScrImage::setBitmap(wxString path)
 
 void ScrImage::onPaint(wxPaintEvent& event){
     wxAutoBufferedPaintDC  paintdc(this);
+    PrepareDC(paintdc);
     paintdc.Clear();
     wxGCDC dc(paintdc);
+    PrepareDC(paintdc);
     dc.SetUserScale(factor, factor);
     dc.DrawBitmap(image,0,0);
 }
