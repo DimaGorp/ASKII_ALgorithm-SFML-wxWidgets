@@ -28,7 +28,7 @@ myWindow::myWindow(const wxString& title,const wxPoint& position,const wxSize& w
     result->Center();
     
     //image = new wxStaticBitmap(this,wxID_ANY,wxBitmap(REFS "no.png",wxBITMAP_TYPE_PNG),wxPoint(this->win_size.GetWidth()/4-200,this->win_size.GetHeight()/4),wxSize(200, 500));
-    image = new ScrImage(this);
+    image = new ScrImage(wxPoint2DDouble(6000,6000),this);
     
     open->Bind(wxEVT_BUTTON,&myWindow::onButtonOpenClick,this);
     convert->Bind(wxEVT_BUTTON,&myWindow::onButtonConvertClick,this);
