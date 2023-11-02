@@ -5,7 +5,6 @@ project(ASKII)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 set(CMAKE_CONFIGURATION_TYPES "Release" CACHE STRING "" FORCE) 
-include(${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 
 find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED GLOBAL)
