@@ -11,18 +11,17 @@ myWindow::myWindow(const wxString& title,const wxPoint& position,const wxSize& w
     
     
     wxBoxSizer * main_sizer = new wxBoxSizer(wxHORIZONTAL);
-    left = new wxBoxSizer(wxVERTICAL);
+    wxBoxSizer *left = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer * centre = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer * right = new wxBoxSizer(wxVERTICAL);
-
+    
    // this = new wxPanel(this);
-    wxButton * open = new wxButton(this,wxID_ANY,wxString("Open"),wxPoint((this->win_size.GetWidth()/2)-50,(this->win_size.GetHeight()/2)-25),wxSize(100,50));
-    wxButton * convert = new wxButton(this,wxID_ANY,wxString("Convert"),wxPoint(open->GetPosition().x,open->GetPosition().y+50),wxSize(100,50));
+    wxButton * open = new wxButton(this,wxID_ANY,wxString("Open"));
+    wxButton * convert = new wxButton(this,wxID_ANY,wxString("Convert"));
     wxInitAllImageHandlers();
     result = new wxStyledTextCtrl(this,wxID_ANY,wxPoint(this->win_size.GetWidth()/2+100,50),wxSize(400,600),  wxTE_MULTILINE  ,wxString("Nothing added yet.."));
     result->SetEditable(wxTE_READONLY);
     right->Add(result,0,wxEXPAND | wxTOP,20);
-
     font = new wxFont(wxSize(16, 16), wxFontFamily::wxFONTFAMILY_TELETYPE, wxFontStyle::wxFONTSTYLE_NORMAL, wxFontWeight::wxFONTWEIGHT_NORMAL);//Monospace font
     result->StyleSetFont(wxSTC_STYLE_DEFAULT,*font);
     result->Center();
@@ -61,10 +60,8 @@ void myWindow::onButtonOpenClick(wxCommandEvent& ev){
         wxLogError("Cannot open file '%s'.", openFileDialog->GetPath());
         return;
     }
-    wxSize sizer_size = left->GetSize();
     image->setBitmap(openFileDialog->GetPath());
     
-    //image->SetSize(sizer_size);
     wxLogStatus(openFileDialog->GetPath());
     
 }
@@ -79,14 +76,12 @@ void myWindow::onButtonConvertClick(wxCommandEvent& ev){
         return;
     }
     std::string row;
-    askii = new askii::ASKII_ALGORITHM(openFileDialog->GetPath().ToStdString());
-    
+    double fac = image->getFactor(); 
+    askii = new askii::ASKII_ALGORITHM(openFileDialog->GetPath().ToStdString(),fac);
     askii->convert_to_aski();
     while (getline (myfile, row))
     {
-        
-        
-        result->AddText(row+"\n");
+        result->AddText("`"+row+"`"+"\n");
     }
     myfile.close();
     delete askii;

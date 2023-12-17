@@ -17,4 +17,5 @@ class ScrImage : public wxScrolled<wxWindow>
 public:
     ScrImage(wxPoint2DDouble virtualSize = wxPoint2DDouble(1000.0f,1000.0f),wxWindow *parent = nullptr,wxWindowID id = wxID_ANY,const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
     void setBitmap(wxString path);
+    double getFactor();
 };

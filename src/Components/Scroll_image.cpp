@@ -43,4 +43,8 @@ void ScrImage::onZoom(wxMouseEvent& event){
     }
     Refresh();
 }
+double ScrImage::getFactor(){
+
+    return factor;
+}
 

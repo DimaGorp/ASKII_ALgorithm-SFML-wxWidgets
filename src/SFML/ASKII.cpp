@@ -11,25 +11,16 @@
 
 namespace askii {
 
-void recieveMessege(ASKII_ALGORITHM& askii,std::string &recieved_string){
-    if(askii.cur_image.loadFromFile(recieved_string)){
-        std::cout<<"Yay, image loaded\n";
-    }
-}
 
 
-
-ASKII_ALGORITHM::ASKII_ALGORITHM(std::string path)
+ASKII_ALGORITHM::ASKII_ALGORITHM(std::string path,double factor)
 {
     if(cur_image.loadFromFile(path)){
        std::cout<<"Yay, image loaded\n";
     }
     this->path = path;
     size = cur_image.getSize();
-    image_string = new std::string[size.y];
-    for (int i = 0; i < size.y; i++){
-        image_string[i] = (char)('1' + i);
-    }
+    this->factor = factor;
 
 };
 
@@ -173,16 +164,20 @@ void ASKII_ALGORITHM::askii_algorithm() {
     }else{
         return;
     }
-    std::string symbols = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$;//{ '@', '%', '#', 'x', '+', '=', ':', '-', '.', ' ' }";
+    std::string symbols = "@%#*+=-:. ";
     int saturation;
     double greyscale;
     int lenght = symbols.size() -1;
     char symbol;
-    for (int y = 0; y<size.y; y++) {
-        for (int x = 0; x<size.x; x++){
-            
+    int scaledW,scaledH;
+    scaledW = (int)size.x * factor;
+    scaledH = (int)size.y * factor;
+    for (int y = 0; y<scaledH; y++) {
+        for (int x = 0; x<scaledW; x++){
+            int originalX = int(x / factor);
+            int originalY = int(y / factor);
             symbol = '\0';
-            greyscale = cur_image.getPixel(x,y).r * 0.299 + cur_image.getPixel(x,y).g * 0.587 +cur_image.getPixel(x,y).b * 0.114;
+            greyscale = cur_image.getPixel(originalX,originalY).r * 0.299 + cur_image.getPixel(originalX,originalY).g * 0.587 +cur_image.getPixel(originalX,originalY).b * 0.114;
             saturation = int((greyscale/255.0 )*(lenght));
             
             
@@ -242,15 +237,6 @@ void ASKII_ALGORITHM::scale(float faсtor) {
     cur_image.create(size.x, size.y, tmp.getPixelsPtr());
     cur_image.copy(tmp, size.x, size.y);
     cur_image.saveToFile("../result/sacling_res.png");
-}
-
-char* ASKII_ALGORITHM::get_askii_array() {
-    char line[94];
-    
-    for (unsigned char i =33,j = 0; i<127; i++,j++) {
-        line[j] = i;
-    }
-    return line;
 }
 
 

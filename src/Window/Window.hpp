@@ -7,6 +7,7 @@
 #include <wx/filedlg.h>
 #include <wx/wfstream.h>
 #include <wx/stc/stc.h>
+#include <wx/radiobut.h>
 
 #include "SFML/ASKII.hpp"
 #include "Components/Scroll_Image.hpp"
@@ -17,7 +18,6 @@ class myWindow : public wxFrame
     wxPoint position;
     //wxStaticBitmap * image;
     wxStyledTextCtrl * result;
-    wxBoxSizer * left;
     wxFont *font;
     wxFileDialog *openFileDialog;
     askii::ASKII_ALGORITHM * askii;

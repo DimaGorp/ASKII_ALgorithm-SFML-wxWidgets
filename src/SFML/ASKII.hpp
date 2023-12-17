@@ -19,31 +19,30 @@ int boundedPixelValue(sf::Color color,float brightnessFactor);
 }
 
 namespace askii {
-class ASKII_ALGORITHM{
-    friend void recieveMessege(ASKII_ALGORITHM& askii,std::string &recieved_string);
-    sf::Image cur_image;
-    sf::Vector2u size;
-    std::ofstream file;
-    std::string path;
-    std::string *image_string;
-    void convert_to_gray();
-    void contrast();
-    int find_min_intensity(char chanel);
-    int find_max_intensity(char chanel);
-    void askii_algorithm();
-    char* get_askii_array();
-    int get_pixel_intensity(sf::Vector2u amount_of_pixels);
-    void scale(float factor);
-public:
-    ASKII_ALGORITHM(std::string path);
-    std::string* getAskiiTable(){return image_string;}
-    ~ASKII_ALGORITHM();
-    sf::Vector2u getSize(){return size;}
+    class ASKII_ALGORITHM{
+        std::string *image_string;
+        std::ofstream file;
+        void convert_to_gray();
+        void contrast();
+        int find_min_intensity(char chanel);
+        int find_max_intensity(char chanel);
+        virtual void askii_algorithm();
+        int get_pixel_intensity(sf::Vector2u amount_of_pixels);
+        void scale(float factor);
+        void applyRobertsCross();
+        protected:
+            sf::Image cur_image;
+            sf::Vector2u size;
+            std::string path;
+            double factor = 0.0f;
+        public:
+            ASKII_ALGORITHM(std::string path,double factor = 0.0f);
+            std::string* getAskiiTable(){return image_string;}
+            ~ASKII_ALGORITHM();
+            sf::Vector2u getSize(){return size;}
 
-    void convert_to_aski();
-};
+            void convert_to_aski();
+    };
 
-void recieveMessege(ASKII_ALGORITHM& askii,std::string &recieved_string);
 }
-
 #endif /* ASKII_hpp */
